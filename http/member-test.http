@@ -1,0 +1,3 @@
+# idea自带的http client可以测试接口
+GET http://localhost:8888/member/hello
+Accept: application/json
