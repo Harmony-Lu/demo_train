@@ -1,5 +1,6 @@
 package com.java.train.member.config;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 @SpringBootApplication
 @ComponentScan("com.java") // 帮助扫描到controller包中的文件
+@MapperScan("com.java.train.member.mapper") // 指示模块的持久层代码路径
 public class MemberApplication {
     private static final Logger LOG = LoggerFactory.getLogger(MemberApplication.class);
 
