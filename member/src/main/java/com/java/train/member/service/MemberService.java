@@ -3,6 +3,7 @@ package com.java.train.member.service;
 import cn.hutool.core.collection.CollUtil;
 import com.java.train.common.exception.BusinessException;
 import com.java.train.common.exception.BusinessExceptionEnum;
+import com.java.train.common.util.SnowUtil;
 import com.java.train.member.domain.Member;
 import com.java.train.member.domain.MemberExample;
 import com.java.train.member.mapper.MemberMapper;
@@ -30,7 +31,8 @@ public class MemberService {
             throw new BusinessException(BusinessExceptionEnum.MEMBER_MOBILE_EXIST);
         }
         Member member = new Member();
-        member.setId(System.currentTimeMillis());
+        // 雪花算法生成member的ID:全局唯一，有序增长，生成效率高
+        member.setId(SnowUtil.getSnowflakeNextId());
         member.setMobile(mobile);
         memberMapper.insert(member);
         return member.getId();
