@@ -75,9 +75,11 @@ export default defineComponent({
         if (data.success) {
           notification.success({ description: '登录成功！' });
           // 登录成功，跳到控台主页
+          // console.log("登陆成功，跳转系统主页")
           router.push("/welcome");
           store.commit("setMember", data.content);
         } else {
+          // console.log("登陆失败，弹出错误信息")
           notification.error({ description: data.message });
         }
       })
