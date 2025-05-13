@@ -1,7 +1,10 @@
 package com.java.train.member.controller;
 
 import com.java.train.common.resp.CommonResp;
+import com.java.train.member.req.MemberLoginReq;
 import com.java.train.member.req.MemberRegisterReq;
+import com.java.train.member.req.MemberSendCodeReq;
+import com.java.train.member.resp.MemberLoginResp;
 import com.java.train.member.service.MemberService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
@@ -25,12 +28,27 @@ public class MemberController {
         // 简化方式
         return new CommonResp<>(count);
     }
-
     // 注册接口
     @PostMapping("/register")
-    public CommonResp register(@Valid MemberRegisterReq req){
+    public CommonResp<Long> register(@Valid MemberRegisterReq req) {
         long register = memberService.register(req);
         return new CommonResp<>(register);
     }
+
+    // 发送验证码的接口
+    @PostMapping("/send-code")
+    public CommonResp sendCode(@Valid MemberSendCodeReq req){
+        memberService.sendCode(req);
+        return new CommonResp<>();
+    }
+
+    // 登录的接口
+    @PostMapping("/login")
+    public CommonResp<MemberLoginResp> login(@Valid MemberLoginReq req){
+        MemberLoginResp resp = memberService.login(req);
+        return new CommonResp<>(resp);
+    }
+
+
 
 }

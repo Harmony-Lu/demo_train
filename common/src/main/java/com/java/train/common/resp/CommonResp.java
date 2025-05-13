@@ -1,5 +1,5 @@
 package com.java.train.common.resp;
-
+// 通用的Response
 public class CommonResp<T> {
 
     /**
