@@ -5,12 +5,8 @@
       <a-form
         :model="loginForm"
         name="basic"
-        :label-col="{ span: 8 }"
-        :wrapper-col="{ span: 16 }"
         autocomplete="off"
-        @finish="onFinish"
-        @finishFailed="onFinishFailed"
-    >
+      >
       <a-form-item
           label=""
           name="mobile"
@@ -18,6 +14,7 @@
       >
         <a-input v-model:value="loginForm.mobile" />
       </a-form-item>
+
       <a-form-item
           label=""
           name="code"
@@ -30,23 +27,9 @@
         </a-input>
       </a-form-item>
 
-      <a-form-item
-          label="Password"
-          name="password"
-          :rules="[{ required: true, message: 'Please input your password!' }]"
-      >
-        <a-input-password v-model:value="loginForm.password" />
-      </a-form-item>
-
-      <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
-        <a-checkbox v-model:checked="loginForm.remember">Remember me</a-checkbox>
-      </a-form-item>
       <a-form-item>
         <a-button type="primary" block @click="login">登录</a-button>
       </a-form-item>
-<!--      <a-form-item :wrapper-col="{ offset: 8, span: 16 }">-->
-<!--        <a-button type="primary" html-type="submit">Submit</a-button>-->
-<!--      </a-form-item>-->
     </a-form>
     </a-col>
   </a-row>
@@ -58,7 +41,7 @@ import { notification } from 'ant-design-vue';
 import { useRouter } from 'vue-router'
 import store from "@/store";
 // 前后端交互组件
-// import axios from 'axios';
+import axios from 'axios';
 
 export default defineComponent({
   name: "login-view",
@@ -71,33 +54,33 @@ export default defineComponent({
     });
 
     const sendCode = () => {
-      console.log("send Code to backend!")
-      // axios.post("/member/member/send-code", {
-      //   mobile: loginForm.mobile
-      // }).then(response => {
-      //   let data = response.data;
-      //   if (data.success) {
-      //     notification.success({ description: '发送验证码成功！' });
-      //     loginForm.code = "8888";
-      //   } else {
-      //     notification.error({ description: data.message });
-      //   }
-      // });
+      console.log("sendCode to backend!")
+      axios.post("/member/member/send-code", {
+        mobile: loginForm.mobile
+      }).then(response => {
+        let data = response.data;
+        if (data.success) {
+          notification.success({ description: '发送验证码成功！' });
+          loginForm.code = "8888";
+        } else {
+          notification.error({ description: data.message });
+        }
+      });
     };
 
     const login = () => {
       console.log("login!")
-      // axios.post("/member/member/login", loginForm).then((response) => {
-      //   let data = response.data;
-      //   if (data.success) {
-      //     notification.success({ description: '登录成功！' });
-      //     // 登录成功，跳到控台主页
-      //     router.push("/welcome");
-      //     store.commit("setMember", data.content);
-      //   } else {
-      //     notification.error({ description: data.message });
-      //   }
-      // })
+      axios.post("/member/member/login", loginForm).then((response) => {
+        let data = response.data;
+        if (data.success) {
+          notification.success({ description: '登录成功！' });
+          // 登录成功，跳到控台主页
+          router.push("/welcome");
+          store.commit("setMember", data.content);
+        } else {
+          notification.error({ description: data.message });
+        }
+      })
     };
 
     return {

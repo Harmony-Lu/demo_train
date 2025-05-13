@@ -3,20 +3,23 @@ GET http://localhost:8888/member/hello
 Accept: application/json
 
 ###
-POST http://localhost:8888/member/member/register
+POST http://localhost:8000/member/member/register
+Content-type: application/json
+
+{
+    "mobile": "11122223333"
+}
+
+###
+POST http://localhost:8000/member/member/send-code
 Content-type: application/x-www-form-urlencoded
 
 mobile=11122223333
 
-###
-POST http://localhost:8888/member/member/send-code
-Content-type: application/x-www-form-urlencoded
-
-mobile=11122223333
-
-###
 ###
 POST http://localhost:8888/member/member/login
 Content-type: application/x-www-form-urlencoded
 
 mobile=11122223333&code=8888
+
+###
