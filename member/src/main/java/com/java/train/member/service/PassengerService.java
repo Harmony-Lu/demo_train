@@ -2,6 +2,7 @@ package com.java.train.member.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
+import com.java.train.common.context.LoginMemberContext;
 import com.java.train.common.util.SnowUtil;
 import com.java.train.member.domain.Passenger;
 import com.java.train.member.mapper.PassengerMapper;
@@ -21,10 +22,12 @@ public class PassengerService {
         DateTime now = DateTime.now();
         // 1、从请求中接受乘车人信息：实体拷贝
         Passenger passenger = BeanUtil.copyProperties(passengerSaveReq, Passenger.class);
+        // 2、获取当前登录会员的id，并设置为乘车人的memberId字段值
+        passenger.setMemberId(LoginMemberContext.getId());
         passenger.setId(SnowUtil.getSnowflakeNextId());
         passenger.setCreateTime(now);
         passenger.setUpdateTime(now);
-        // 2、把乘车人插入数据库表
+        // 3、把乘车人插入数据库表
         passengerMapper.insert(passenger);
     }
 }

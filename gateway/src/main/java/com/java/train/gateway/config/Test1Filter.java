@@ -1,4 +1,4 @@
-package com.java.train.gateway.config;// package com.jiawa.train.gateway.config;
+package com.java.train.gateway.config;
 
 //
 // @Component
