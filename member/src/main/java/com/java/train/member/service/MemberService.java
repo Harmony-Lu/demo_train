@@ -5,6 +5,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.java.train.common.exception.BusinessException;
 import com.java.train.common.exception.BusinessExceptionEnum;
+import com.java.train.common.util.JwtUtil;
 import com.java.train.common.util.SnowUtil;
 import com.java.train.member.domain.Member;
 import com.java.train.member.domain.MemberExample;
@@ -92,9 +93,12 @@ public class MemberService {
             //验证码错误
             throw new BusinessException(BusinessExceptionEnum.MEMBER_MOBILE_CODE_ERROR);
         }
-        // 3、返回memberDB的值
-        return BeanUtil.copyProperties(memberDB, MemberLoginResp.class);
-
+        // 3、把memberDB的值放入返回值中
+        MemberLoginResp resp =  BeanUtil.copyProperties(memberDB, MemberLoginResp.class);
+        // 4、利用自己包装的工具类JwtUtil，生成JWT Token放入返回值中
+        String token = JwtUtil.createToken(resp.getId(), resp.getMobile());
+        resp.setToken(token);
+        return resp;
         
     }
 
