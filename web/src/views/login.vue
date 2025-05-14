@@ -76,6 +76,7 @@ export default defineComponent({
           notification.success({ description: '登录成功！' });
           // 登录成功，跳转到控台主页
           router.push("/");
+          // 保存登录信息
           store.commit("setMember", data.content);
         } else {
           // 登陆失败
@@ -94,5 +95,15 @@ export default defineComponent({
 </script>
 
 <style>
-
+login-main h1 {
+  font-size: 25px;
+  font-weight: bold;
+}
+.login-main {
+  margin-top: 100px;
+  padding: 30px 30px 20px;
+  border: 2px solid grey;
+  border-radius: 10px;
+  background-color: #fcfcfc;
+}
 </style>
