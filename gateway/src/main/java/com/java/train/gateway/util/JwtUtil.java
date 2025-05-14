@@ -1,4 +1,4 @@
-package com.java.train.common.util;
+package com.java.train.gateway.util;
 
 import cn.hutool.core.date.DateField;
 import cn.hutool.core.date.DateTime;
@@ -18,7 +18,7 @@ public class JwtUtil {
     /**
      * 盐值很重要，不能泄漏，且每个项目都应该不一样，可以放到配置文件中
      */
-    private static final String key = "Jiawa12306";
+    private static final String key = "Java12306";
 
     public static String createToken(Long id, String mobile) {
         DateTime now = DateTime.now();
@@ -39,11 +39,16 @@ public class JwtUtil {
     }
 
     public static boolean validate(String token) {
-        JWT jwt = JWTUtil.parseToken(token).setKey(key.getBytes());
-        // validate包含了verify
-        boolean validate = jwt.validate(0);
-        LOG.info("JWT token校验结果：{}", validate);
-        return validate;
+        try {
+            JWT jwt = JWTUtil.parseToken(token).setKey(key.getBytes());
+            // validate包含了verify
+            boolean validate = jwt.validate(0);
+            LOG.info("JWT token校验结果：{}", validate);
+            return validate;
+        } catch (Exception e) {
+            LOG.error("JWT token校验异常", e);
+            return false;
+        }
     }
 
     public static JSONObject getJSONObject(String token) {
