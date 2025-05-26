@@ -2,14 +2,20 @@ package com.java.train.member.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
+import cn.hutool.core.util.ObjectUtil;
 import com.java.train.common.context.LoginMemberContext;
 import com.java.train.common.util.SnowUtil;
 import com.java.train.member.domain.Passenger;
+import com.java.train.member.domain.PassengerExample;
 import com.java.train.member.mapper.PassengerMapper;
+import com.java.train.member.req.PassengerQueryReq;
 import com.java.train.member.req.PassengerSaveReq;
+import com.java.train.member.resp.PassengerQueryResp;
 import jakarta.annotation.Resource;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PassengerService {
@@ -29,5 +35,16 @@ public class PassengerService {
         passenger.setUpdateTime(now);
         // 3、把乘车人插入数据库表
         passengerMapper.insert(passenger);
+    }
+
+    public List<PassengerQueryResp> queryList(PassengerQueryReq req) {
+        PassengerExample passengerExample = new PassengerExample();
+        PassengerExample.Criteria criteria = passengerExample.createCriteria();
+        if(ObjectUtil.isNotNull((req.getMemberId()))){
+            criteria.andMemberIdEqualTo(req.getMemberId());
+        }
+
+        List<Passenger> passengerList = passengerMapper.selectByExample((passengerExample));
+        return BeanUtil.copyToList(passengerList, PassengerQueryResp.class);
     }
 }
