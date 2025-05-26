@@ -23,7 +23,7 @@ POST http://localhost:8000/member/member/login
 Content-type: application/json
 
 {
-    "mobile": "11122223333",
+    "mobile": "111222333",
     "code" : "8888"
 }
 

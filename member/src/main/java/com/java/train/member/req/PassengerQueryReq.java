@@ -1,6 +1,8 @@
 package com.java.train.member.req;
 
-public class PassengerQueryReq {
+import com.java.train.common.req.PageReq;
+
+public class PassengerQueryReq extends PageReq {
 
 //    @NotNull( message = "【会员ID】不能为空")
     private Long memberId;
