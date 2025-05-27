@@ -1,6 +1,5 @@
 package com.java.train.generator.util;
 
-
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 
