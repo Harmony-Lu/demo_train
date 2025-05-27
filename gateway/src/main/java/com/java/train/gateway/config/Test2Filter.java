@@ -1,5 +1,5 @@
-package com.java.train.gateway.config;// package com.jiawa.train.gateway.config;
-//
+package com.java.train.gateway.config;
+
 // import org.slf4j.Logger;
 // import org.slf4j.LoggerFactory;
 // import org.springframework.cloud.gateway.filter.GatewayFilterChain;

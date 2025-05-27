@@ -26,7 +26,7 @@ public class ServerGenerator {
     public static void main(String[] args) throws Exception {
         // 获取mybatis-generator
         String generatorPath = getGeneratorPath();
-        // 比如generator-config-member.xml，得到module = member
+        // 比如generator-config-member.xml，得到模块名module = member
         module = generatorPath.replace("src/main/resources/generator-config-", "").replace(".xml", "");
         System.out.println("module: " + module);
         serverPath = serverPath.replace("[module]", module);
@@ -76,12 +76,13 @@ public class ServerGenerator {
         param.put("readOnly", readOnly);
         System.out.println("组装参数：" + param);
 
+        // 生成后端java文件
         gen(Domain, param, "service", "service");
         gen(Domain, param, "controller/admin", "adminController");
         gen(Domain, param, "req", "saveReq");
         gen(Domain, param, "req", "queryReq");
         gen(Domain, param, "resp", "queryResp");
-
+        // 生成前端vue文件
         genVue(do_main, param);
     }
 
