@@ -49,7 +49,7 @@ export default defineComponent({
     const router = useRouter();
 
     const loginForm = reactive({
-      mobile: '13000000000',
+      mobile: '11122223333',
       code: '',
     });
 

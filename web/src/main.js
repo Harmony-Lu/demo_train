@@ -2,16 +2,17 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import './assets/js/enums';
 // 全局引入Ant-design-vue
 import Antd, {notification} from 'ant-design-vue';
 import 'ant-design-vue/dist/reset.css';
 import * as Icons from '@ant-design/icons-vue';
-
 import axios from "axios";
 
 // 把 App.vue 填充到 /public/index.html中id为app的元素中
 const app = createApp(App);
 app.use(Antd).use(store).use(router).mount('#app');
+
 
 // 全局使用图标组件
 const icons = Icons;

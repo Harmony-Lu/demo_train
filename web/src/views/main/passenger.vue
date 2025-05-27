@@ -60,7 +60,6 @@ export default defineComponent({
   name: "passenger-view",
   setup() {
     const PASSENGER_TYPE_ARRAY = window.PASSENGER_TYPE_ARRAY;
-    console.log('PASSENGER_TYPE_ARRAY=', PASSENGER_TYPE_ARRAY)
     const visible = ref(false);
     let passenger = ref({
       id: undefined,
@@ -76,7 +75,7 @@ export default defineComponent({
     const pagination = ref({
       total: 0,
       current: 1,
-      pageSize: 10,
+      pageSize: 2,
     });
     let loading = ref(false);
     const columns = [
@@ -112,6 +111,7 @@ export default defineComponent({
     };
 
     const onEdit = (record) => {
+      console.log("window.Tool=", window.Tool)
       passenger.value = window.Tool.copy(record);
       visible.value = true;
     };
