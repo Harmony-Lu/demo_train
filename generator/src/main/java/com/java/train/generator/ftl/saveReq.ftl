@@ -1,4 +1,4 @@
-package com.jiawa.train.${module}.req;
+package com.java.train.${module}.req;
 
 <#list typeSet as type>
 <#if type=='Date'>
