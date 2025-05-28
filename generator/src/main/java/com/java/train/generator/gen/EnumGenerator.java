@@ -1,9 +1,7 @@
 package com.java.train.generator.gen;
 
 import cn.hutool.core.util.StrUtil;
-//import com.java.train.business.enums.ConfirmOrderStatusEnum;
-//import com.java.train.business.enums.SeatColEnum;
-//import com.java.train.business.enums.SeatTypeEnum;
+import com.java.train.business.enums.SeatTypeEnum;
 import com.java.train.business.enums.TrainTypeEnum;
 import com.java.train.member.enums.PassengerTypeEnum;
 
@@ -27,7 +25,7 @@ public class EnumGenerator {
         try {
             toJson(PassengerTypeEnum.class, bufferObject, bufferArray);
             toJson(TrainTypeEnum.class, bufferObject, bufferArray);
-//            toJson(SeatTypeEnum.class, bufferObject, bufferArray);
+            toJson(SeatTypeEnum.class, bufferObject, bufferArray);
 //            toJson(SeatColEnum.class, bufferObject, bufferArray);
 //            toJson(ConfirmOrderStatusEnum.class, bufferObject, bufferArray);
 
