@@ -1,4 +1,4 @@
-package com.java.train.${module}.controller.admin;
+package com.java.train.${module}.controller;
 
 import com.java.train.common.context.LoginMemberContext;
 import com.java.train.common.resp.CommonResp;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/${do_main}")
-public class ${Domain}AdminController {
+public class ${Domain}Controller {
 
     @Resource
     private ${Domain}Service ${domain}Service;

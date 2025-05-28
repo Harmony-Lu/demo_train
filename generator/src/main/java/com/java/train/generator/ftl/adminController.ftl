@@ -1,6 +1,5 @@
 package com.java.train.${module}.controller.admin;
 
-import com.java.train.common.context.LoginMemberContext;
 import com.java.train.common.resp.CommonResp;
 import com.java.train.common.resp.PageResp;
 import com.java.train.${module}.req.${Domain}QueryReq;
