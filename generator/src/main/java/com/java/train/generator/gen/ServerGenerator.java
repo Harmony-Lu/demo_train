@@ -14,11 +14,13 @@ import java.io.IOException;
 import java.util.*;
 
 public class ServerGenerator {
+    static String module = "business";
+
     static boolean readOnly = true;
     static String vuePath = "admin/src/views/main/";
     static String serverPath = "[module]/src/main/java/com/java/train/[module]/";
     static String pomPath = "generator/pom.xml";
-    static String module = "";
+
     static {
         new File(serverPath).mkdirs();
     }
