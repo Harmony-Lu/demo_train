@@ -37,7 +37,7 @@
         <a-input v-model:value="trainStation.name" />
       </a-form-item>
       <a-form-item label="站名拼音">
-        <a-input v-model:value="trainStation.namePinyin" />
+        <a-input v-model:value="trainStation.namePinyin" disabled />
       </a-form-item>
       <a-form-item label="进站时间">
         <a-time-picker v-model:value="trainStation.inTime" valueFormat="HH:mm:ss" placeholder="请选择时间" />
@@ -46,7 +46,7 @@
         <a-time-picker v-model:value="trainStation.outTime" valueFormat="HH:mm:ss" placeholder="请选择时间" />
       </a-form-item>
       <a-form-item label="停站时长">
-        <a-time-picker v-model:value="trainStation.stopTime" valueFormat="HH:mm:ss" placeholder="请选择时间" />
+        <a-time-picker v-model:value="trainStation.stopTime" valueFormat="HH:mm:ss" placeholder="请选择时间" disabled />
       </a-form-item>
       <a-form-item label="里程（公里）">
         <a-input v-model:value="trainStation.km" />
@@ -56,9 +56,11 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted } from 'vue';
+import { defineComponent, ref, onMounted, watch } from 'vue';
 import {notification} from "ant-design-vue";
 import axios from "axios";
+import {pinyin} from "pinyin-pro";
+import dayjs from 'dayjs';
 
 export default defineComponent({
   name: "train-station-view",
@@ -131,6 +133,27 @@ export default defineComponent({
       dataIndex: 'operation'
     }
     ];
+
+    watch(() => trainStation.value.name, ()=>{
+      if (Tool.isNotEmpty(trainStation.value.name)) {
+        trainStation.value.namePinyin = pinyin(trainStation.value.name, { toneType: 'none'}).replaceAll(" ", "");
+      } else {
+        trainStation.value.namePinyin = "";
+      }
+    }, {immediate: true});
+
+    // 自动计算停车时长
+    watch(() => trainStation.value.inTime, ()=>{
+      let diff = dayjs(trainStation.value.outTime, 'HH:mm:ss').diff(dayjs(trainStation.value.inTime, 'HH:mm:ss'), 'seconds');
+      trainStation.value.stopTime = dayjs('00:00:00', 'HH:mm:ss').second(diff).format('HH:mm:ss');
+    }, {immediate: true});
+
+    // 自动计算停车时长
+    watch(() => trainStation.value.outTime, ()=>{
+      let diff = dayjs(trainStation.value.outTime, 'HH:mm:ss').diff(dayjs(trainStation.value.inTime, 'HH:mm:ss'), 'seconds');
+      trainStation.value.stopTime = dayjs('00:00:00', 'HH:mm:ss').second(diff).format('HH:mm:ss');
+    }, {immediate: true});
+
 
     const onAdd = () => {
       trainStation.value = {};
