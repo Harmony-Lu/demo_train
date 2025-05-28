@@ -1,0 +1,10 @@
+# idea自带的http client工具, 可以测试接口
+GET http://localhost:8002/business/hello
+Accept: application/json
+
+###
+
+GET http://localhost:8000/business/hello
+Accept: application/json
+
+###
