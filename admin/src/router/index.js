@@ -1,7 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import store from "@/store";
-import {notification} from "ant-design-vue";
 
 const routes = [
   {
