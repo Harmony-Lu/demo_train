@@ -34,7 +34,7 @@
         <a-input v-model:value="trainStation.index" />
       </a-form-item>
       <a-form-item label="站名">
-        <a-input v-model:value="trainStation.name" />
+        <station-select-view v-model:value="trainStation.name"></station-select-view>
       </a-form-item>
       <a-form-item label="站名拼音">
         <a-input v-model:value="trainStation.namePinyin" disabled />
@@ -62,10 +62,11 @@ import axios from "axios";
 import {pinyin} from "pinyin-pro";
 import dayjs from 'dayjs';
 import TrainSelectView from "@/components/train-select.vue";
+import StationSelectView from "@/components/station-select.vue";
 
 export default defineComponent({
   name: "train-station-view",
-  components: {TrainSelectView},
+  components: {StationSelectView, TrainSelectView},
   emits: ['update:modelValue', 'change'],
   setup({emit}) {
     const visible = ref(false);
