@@ -1,7 +1,7 @@
 <template>
   <p>
     <a-space>
-      <train-select-view v-model="params.trainCode"></train-select-view>
+      <train-select-view v-model="params.trainCode" width="200px"></train-select-view>
       <a-button type="primary" @click="handleQuery()">查找</a-button>
       <a-button type="primary" @click="onAdd">新增</a-button>
     </a-space>
@@ -212,11 +212,12 @@ export default defineComponent({
         };
       }
       loading.value = true;
+      console.log("params.trainCode=", params.trainCode)
       axios.get("/business/admin/train-station/query-list", {
         params: {
           page: param.page,
           size: param.size,
-          trainCode: params.trainCode
+          trainCode: params.value.trainCode,
         }
       }).then((response) => {
         loading.value = false;
