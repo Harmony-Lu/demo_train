@@ -15,7 +15,7 @@ import java.util.*;
 
 public class ServerGenerator {
     static String module = "business";
-    static boolean readOnly = true;
+    static boolean readOnly = false;
 //    // web
 //    static String vuePath = "web/src/views/main/";
     // admin
@@ -88,8 +88,8 @@ public class ServerGenerator {
         gen(Domain, param, "req", "queryReq");
         gen(Domain, param, "resp", "queryResp");
 
-//        // 在admin模块中生成前端vue文件
-//        genVue(do_main, param);
+        // 在admin模块中生成前端vue文件
+        genVue(do_main, param);
     }
 
     private static void gen(String Domain, Map<String, Object> param, String packageName, String target) throws IOException, TemplateException {
