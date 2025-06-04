@@ -15,7 +15,7 @@ import java.util.*;
 
 public class ServerGenerator {
     static String module = "business";
-    static boolean readOnly = false;
+    static boolean readOnly = true;
 //    // web
 //    static String vuePath = "web/src/views/main/";
     // admin
@@ -80,13 +80,13 @@ public class ServerGenerator {
         param.put("readOnly", readOnly);
         System.out.println("组装参数：" + param);
 
-        // 在对应模块中生成后端java文件
-        gen(Domain, param, "service", "service");
-        gen(Domain, param, "controller/admin", "adminController");
-//        gen(Domain, param, "controller", "controller");
-        gen(Domain, param, "req", "saveReq");
-        gen(Domain, param, "req", "queryReq");
-        gen(Domain, param, "resp", "queryResp");
+//        // 在对应模块中生成后端java文件
+//        gen(Domain, param, "service", "service");
+//        gen(Domain, param, "controller/admin", "adminController");
+////        gen(Domain, param, "controller", "controller");
+//        gen(Domain, param, "req", "saveReq");
+//        gen(Domain, param, "req", "queryReq");
+//        gen(Domain, param, "resp", "queryResp");
 
         // 在admin模块中生成前端vue文件
         genVue(do_main, param);
