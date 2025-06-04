@@ -104,4 +104,5 @@ public class TrainCarriageService {
         criteria.andTrainCodeEqualTo(trainCode);
         return trainCarriageMapper.selectByExample(trainCarriageExample);
     }
+
 }
