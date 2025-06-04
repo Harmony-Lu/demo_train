@@ -74,3 +74,41 @@ Content-Type: application/json
   "name": "com.java.train.batch.job.DailyTrainJob",
   "jobGroupName": "default"
 }
+
+###
+
+POST http://localhost:8000/batch/admin/job/add
+Content-Type: application/json
+
+{
+  "name": "com.java.train.batch.job.DailyTrainJob",
+  "jobGroupName": "default",
+  "cronExpression": "*/8 * * * * ?",
+  "desc": " test DailyTrainJob "
+}
+
+###
+
+GET http://localhost:8000/batch/admin/job/query
+
+###
+
+POST http://localhost:8000/batch/admin/job/pause
+Content-Type: application/json
+
+{
+  "name": "com.java.train.batch.job.DailyTrainJob",
+  "jobGroupName": "default"
+}
+
+###
+
+POST http://localhost:8000/batch/admin/job/delete
+Content-Type: application/json
+
+{
+  "name": "com.java.train.batch.job.DailyTrainJob",
+  "jobGroupName": "default"
+}
+
+###
