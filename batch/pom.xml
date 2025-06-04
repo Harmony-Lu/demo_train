@@ -80,6 +80,17 @@
             <artifactId>spring-boot-starter-quartz</artifactId>
         </dependency>
 
+        <!--远程调用openfeign SpringBoot自带的库，不需要加版本号-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--openfeign默认使用的是loadBalance的负载均衡器  -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-loadbalancer</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
