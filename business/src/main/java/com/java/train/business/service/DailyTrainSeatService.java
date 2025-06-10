@@ -94,7 +94,6 @@ public class DailyTrainSeatService {
         // 获取该车次的车站数量，方便初始化sell字段
         List<TrainStation> stationList = trainStationService.selectByTrainCode(trainCode);
         String sell = StrUtil.fillBefore("", '0', stationList.size()-1);
-        System.out.println("sell=" + sell);
 
         // 查出该车次的所有座位信息
         List<TrainSeat> seatList = trainSeatService.selectByTrainCode(trainCode);
