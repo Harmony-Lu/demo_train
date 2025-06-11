@@ -179,7 +179,7 @@ export default defineComponent({
     //   key: 'endIndex',
     // },
     {
-      title: '一等座余票',
+      title: '一等座',
       dataIndex: 'ydz',
       key: 'ydz',
     },
@@ -189,7 +189,7 @@ export default defineComponent({
     //   key: 'ydzPrice',
     // },
     {
-      title: '二等座余票',
+      title: '二等座',
       dataIndex: 'edz',
       key: 'edz',
     },
@@ -199,7 +199,7 @@ export default defineComponent({
     //   key: 'edzPrice',
     // },
     {
-      title: '软卧余票',
+      title: '软卧',
       dataIndex: 'rw',
       key: 'rw',
     },
@@ -209,7 +209,7 @@ export default defineComponent({
     //   key: 'rwPrice',
     // },
     {
-      title: '硬卧余票',
+      title: '硬卧',
       dataIndex: 'yw',
       key: 'yw',
     },
