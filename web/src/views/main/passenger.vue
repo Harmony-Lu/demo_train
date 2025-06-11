@@ -1,5 +1,4 @@
 <template>
-  <h1>乘车人管理</h1>
   <p>
     <a-space>
       <a-button type="primary" @click="handleQuery()">刷新</a-button>
